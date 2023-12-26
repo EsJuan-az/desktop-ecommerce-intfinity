@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 //Este comentario lo hizo JuanEs-az.
+//comentario nico
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,5 +25,3 @@ public class HelloApplication extends Application {
         launch();
     }
 }
-
-//gay
