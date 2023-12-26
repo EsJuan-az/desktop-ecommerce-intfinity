@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intfinty.appintfinity.PrincipalController">
+    <TabPane layoutX="83.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Untitled Tab 1" />
+        <Tab text="Untitled Tab 2" />
+        <Tab text="Untitled Tab">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="14.0" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Nit" />
+                        <TextField fx:id="Nit" />
+                        <Label text="Nombre" />
+                        <TextField fx:id="Nombre" />
+                        <Label text="Direccion" />
+                        <TextField fx:id="DireccionPro" />
+                        <Label text="Numero" />
+                        <TextField fx:id="Numero" />
+                        <Label text="Correo" />
+                        <TextField fx:id="Correo" />
+                        <Label text="Descripcion" />
+                        <TextField fx:id="Descripcion" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="SavePro" layoutX="14.0" layoutY="279.0" mnemonicParsing="false" text="Save" />
+               </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Untitled Tab">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+        <Tab text="Untitled Tab">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+        <Tab text="Untitled Tab">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+        </Tab>
+    </TabPane>
+    <VBox fx:id="MenudesP" layoutX="-14.0" layoutY="50.0" prefHeight="402.0" prefWidth="97.0" spacing="10.0" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="1197.0" AnchorPane.topAnchor="50.0">
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+            <tooltip>
+                <Tooltip text="Ordenes" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/entrega.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+            <tooltip>
+                <Tooltip text="Compras" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/Compras.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+            <tooltip>
+                <Tooltip text="Proveedores" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/repartidor.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+            <tooltip>
+                <Tooltip text="Clientes" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/grupo-de-chat.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+            <tooltip>
+                <Tooltip text="Productos" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/caja.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+            <tooltip>
+                <Tooltip text="Informes" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/informe.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+            <tooltip>
+                <Tooltip text="Configuracion" />
+            </tooltip>
+            <graphic>
+                <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Img/configuracion.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+    </VBox>
+    <Button fx:id="BotonMenu" mnemonicParsing="false">
+        <graphic>
+            <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@Img/menu.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+</AnchorPane>
