@@ -1,9 +1,7 @@
 package com.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import com.services.ProviderService;
 import org.json.JSONObject;
@@ -39,6 +37,8 @@ public class PrincipalController {
 
     @FXML
     private TextField Correo;
+    @FXML
+    private TabPane myTabPane;
 
     @FXML
     private TextField Descripcion;
@@ -46,17 +46,20 @@ public class PrincipalController {
     private TableView<?> TabPro;
     @FXML
     private Button ShowPro;
+    @FXML
+    private Tab Tabpro;
 
     @FXML
     public void initialize() {
-        this.user.getString("rol");
+        /*this.user.getString("rol");
         this.user.getString("name");
-        this.user.getString("last_name");
+        this.user.getString("last_name");*/
         ShowPro.setOnAction(e -> onShowPro());
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         SavePro.setOnAction(e -> handleSaveAction());
     }
     private void onShowPro(){
+        myTabPane.getSelectionModel().select(Tabpro);
 
     }
     private void handleSaveAction() {
