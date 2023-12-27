@@ -64,6 +64,7 @@
                   <Button layoutX="46.0" layoutY="346.0" mnemonicParsing="false" text="Button" />
                   <Button layoutX="135.0" layoutY="346.0" mnemonicParsing="false" text="Button" />
                   <Button layoutX="59.0" layoutY="395.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="137.0" layoutY="397.0" mnemonicParsing="false" text="Button" />
                </children></AnchorPane>
             </content>
         </Tab>
