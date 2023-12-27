@@ -49,15 +49,15 @@ public class PrincipalController {
 
     @FXML
     public void initialize() {
-        this.user.getString("rol");
-        this.user.getString("name");
-        this.user.getString("last_name");
+        //this.user.getString("rol");
+        //this.user.getString("name");
+        //this.user.getString("last_name");
         ShowPro.setOnAction(e -> onShowPro());
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         SavePro.setOnAction(e -> handleSaveAction());
     }
     private void onShowPro(){
-
+        System.out.println("Mostrar proveedores");
     }
     private void handleSaveAction() {
         String nitValue = Nit.getText();
