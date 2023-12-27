@@ -8,15 +8,14 @@ import java.io.IOException;
 
 public class ProviderService {
     public static JSONObject create(String name, String nit, String direction, String phone, String email, String description) throws IOException {
-        String body = "{\r\n" +
-                "    \"name\": \"" + name + "\",\r\n" +
-                "    \"NIT\": \"" + nit + "\",\r\n" +
-                "    \"direction\": \"" + direction + "\",\r\n" +
-                "    \"phone\": \"" + phone + "\",\r\n" +
-                "    \"email\": \"" + email + "\",\r\n" +
-                "    \"description\": \"" + description + "\"\r\n" +
-                "}";
+        JSONObject body = new JSONObject();
+        body.put("name",name);
+        body.put("NIT", nit);
+        body.put("direction", direction);
+        body.put("phone", phone);
+        body.put("email", email );
+        body.put("description", description);
         return CRUDHandler.getInstance()
-                .post("/provider", body);
+                .post("/provider", body.toString());
     }
 }

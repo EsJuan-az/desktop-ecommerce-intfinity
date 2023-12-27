@@ -58,7 +58,7 @@ public class PrincipalController {
         String descripcionValue = Descripcion.getText();
         try {
             JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
-            System.out.println(respuestagregarP);
+            System.out.println(respuestagregarP.toString());
         } catch (Exception e) {
             // Manejar la excepción, posiblemente mostrar un mensaje al usuario
             e.printStackTrace();
