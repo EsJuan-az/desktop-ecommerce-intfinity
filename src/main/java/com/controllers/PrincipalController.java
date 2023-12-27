@@ -1,14 +1,19 @@
-package com.intfinty.appintfinity;
+package com.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
-import Helped.Consultas;
+import com.services.ProviderService;
+import org.json.JSONObject;
 
 
 public class PrincipalController {
+
+    private JSONObject user;
+    public void setUser( JSONObject user ){
+        this.user = user;
+    }
 
     @FXML
     private VBox MenudesP;
@@ -52,7 +57,7 @@ public class PrincipalController {
         String correoValue = Correo.getText();
         String descripcionValue = Descripcion.getText();
         try {
-            String respuestagregarP = Consultas.AgregarP(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
+            JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
             System.out.println(respuestagregarP);
         } catch (Exception e) {
             // Manejar la excepción, posiblemente mostrar un mensaje al usuario

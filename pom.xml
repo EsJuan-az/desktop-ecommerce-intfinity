@@ -109,11 +109,13 @@
       <artifactId>okhttp</artifactId>
       <version>4.12.0</version> <!-- Utiliza esta versión o verifica si hay una más reciente -->
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
     <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.8.9</version>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20231013</version>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -136,7 +138,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.intfinty.appintfinity/com.intfinty.appintfinity.HelloApplication</mainClass>
+              <mainClass>com.intfinty.appintfinity/com.controllers.MainController</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

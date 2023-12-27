@@ -11,10 +11,10 @@ module com.intfinty.appintfinity {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires okhttp3;
-    requires com.google.gson;
+    requires org.json;
 
-    opens com.intfinty.appintfinity to javafx.fxml;
-    exports com.intfinty.appintfinity;
-    exports Helped;
-    opens Helped to javafx.fxml;
+    opens com.controllers to javafx.fxml;
+    exports com.controllers;
+    exports com.services;
+    opens com.services to javafx.fxml;
 }

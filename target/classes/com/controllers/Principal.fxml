@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intfinty.appintfinity.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController">
     <TabPane layoutX="83.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Untitled Tab 1" />
         <Tab text="Untitled Tab 2" />
@@ -87,7 +87,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/entrega.png" />
+                        <Image url="@assets/img/entrega.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -98,7 +98,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/Compras.png" />
+                        <Image url="@assets/img/Compras.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -109,7 +109,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/repartidor.png" />
+                        <Image url="@assets/img/repartidor.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -120,7 +120,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/grupo-de-chat.png" />
+                        <Image url="@assets/img/grupo-de-chat.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -131,7 +131,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/caja.png" />
+                        <Image url="@assets/img/caja.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -142,7 +142,7 @@
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/informe.png" />
+                        <Image url="@assets/img/informe.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -153,7 +153,7 @@
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/configuracion.png" />
+                        <Image url="@assets/img/configuracion.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -162,7 +162,7 @@
         <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@Img/menu.png" />
+                    <Image url="@assets/img/menu.png" />
                 </image>
             </ImageView>
         </graphic>

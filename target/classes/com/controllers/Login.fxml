@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="265.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intfinty.appintfinity.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="265.0" stylesheets="@assets/css/Login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
   <children>
     <!-- Button with styleClass 'primary' to apply primary CSS styles -->
     <Button fx:id="loginButton" layoutX="95.0" layoutY="300.0" mnemonicParsing="false" onAction="#onLoginButtonClick" styleClass="primary" text="Ingresar" />
@@ -18,7 +18,7 @@
     <!-- ImageView remains unchanged -->
     <ImageView fitHeight="86.0" fitWidth="150.0" layoutX="90.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
       <image>
-        <Image url="@Img/Logos/Logo.jpeg" />
+        <Image url="@assets/img/Logo.jpeg" />
       </image>
     </ImageView>
 

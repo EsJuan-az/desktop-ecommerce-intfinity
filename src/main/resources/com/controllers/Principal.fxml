@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.intfinty.appintfinity.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController">
     <TabPane layoutX="83.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
         <Tab text="Untitled Tab 1" />
         <Tab text="Untitled Tab 2" />
@@ -41,7 +43,29 @@
         </Tab>
         <Tab text="Untitled Tab">
             <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="14.0" prefHeight="31.0" prefWidth="49.0" text="DNI:" />
+                  <Label layoutX="9.0" layoutY="80.0" text="Nombre:" />
+                  <Label layoutX="7.0" layoutY="133.0" text="Telefono:" />
+                  <Label layoutX="6.0" layoutY="193.0" text="Direccion:" />
+                  <TextField layoutX="9.0" layoutY="42.0" />
+                  <TextField layoutX="9.0" layoutY="98.0" />
+                  <TextField layoutX="9.0" layoutY="151.0" />
+                  <TextField layoutX="9.0" layoutY="211.0" />
+                  <TableView layoutX="252.0" layoutY="15.0" prefHeight="393.0" prefWidth="889.0">
+                     <columns>
+                        <TableColumn prefWidth="89.0" text="DNI" />
+                        <TableColumn prefWidth="89.0" text="Nombre" />
+                        <TableColumn prefWidth="89.0" text="Telefono" />
+                        <TableColumn prefWidth="89.0" text="Direccion" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="46.0" layoutY="346.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="135.0" layoutY="346.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="59.0" layoutY="395.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="137.0" layoutY="397.0" mnemonicParsing="false" text="Button" />
+               </children></AnchorPane>
             </content>
         </Tab>
         <Tab text="Untitled Tab">
@@ -63,7 +87,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/entrega.png" />
+                        <Image url="@assets/img/entrega.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -74,7 +98,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/Compras.png" />
+                        <Image url="@assets/img/Compras.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -85,7 +109,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/repartidor.png" />
+                        <Image url="@assets/img/repartidor.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -96,7 +120,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/grupo-de-chat.png" />
+                        <Image url="@assets/img/grupo-de-chat.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -107,7 +131,7 @@
             <graphic>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/caja.png" />
+                        <Image url="@assets/img/caja.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -118,7 +142,7 @@
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/informe.png" />
+                        <Image url="@assets/img/informe.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -129,7 +153,7 @@
             <graphic>
                 <ImageView fitHeight="42.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@Img/configuracion.png" />
+                        <Image url="@assets/img/configuracion.png" />
                     </image>
                 </ImageView>
             </graphic></Button>
@@ -138,7 +162,7 @@
         <graphic>
             <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@Img/menu.png" />
+                    <Image url="@assets/img/menu.png" />
                 </image>
             </ImageView>
         </graphic>
