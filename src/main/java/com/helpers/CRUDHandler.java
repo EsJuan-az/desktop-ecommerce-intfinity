@@ -2,11 +2,15 @@ package com.helpers;
 
 
 import okhttp3.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.IOException;
 public class CRUDHandler {
     private static CRUDHandler instance;
-    private static final String API = "https://intfinity-enterprise-backend.onrender.com/api/company/1";
+    private static String API = "https://intfinity-enterprise-backend.onrender.com/api/company/1";
+    public static void setCompanyId( int CompanyId ){
+        //CRUDHandler.API = "https://intfinity-enterprise-backend.onrender.com/api/company/" + CompanyId;
+    }
     public static CRUDHandler getInstance(){
         if( CRUDHandler.instance == null ) {
             CRUDHandler.instance = new CRUDHandler();
@@ -26,6 +30,30 @@ public class CRUDHandler {
         Request request = new Request.Builder()
                 .url(API + URL)
                 .post(body)
+                .build();
+        try (Response response = this.client.newCall(request).execute()) {
+            assert response.body() != null;
+            return new JSONObject(response.body().string());
+        }
+    }
+    public JSONArray getAll( String URL ) throws IOException{
+
+        RequestBody body = RequestBody.create("", this.mediaType);
+        Request request = new Request.Builder()
+                .url(API +  URL)
+                .method("GET", body)
+                .build();
+        try (Response response = this.client.newCall(request).execute()) {
+            assert response.body() != null;
+            return new JSONArray(response.body().string());
+        }
+    }
+    public JSONObject getOne( String URL ) throws IOException{
+
+        RequestBody body = RequestBody.create("", this.mediaType);
+        Request request = new Request.Builder()
+                .url(API +  URL)
+                .method("GET", body)
                 .build();
         try (Response response = this.client.newCall(request).execute()) {
             assert response.body() != null;

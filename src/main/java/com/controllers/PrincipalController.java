@@ -2,6 +2,7 @@ package com.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import com.services.ProviderService;
@@ -41,14 +42,23 @@ public class PrincipalController {
 
     @FXML
     private TextField Descripcion;
-
+    @FXML
+    private TableView<?> TabPro;
+    @FXML
+    private Button ShowPro;
 
     @FXML
     public void initialize() {
+        this.user.getString("rol");
+        this.user.getString("name");
+        this.user.getString("last_name");
+        ShowPro.setOnAction(e -> onShowPro());
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         SavePro.setOnAction(e -> handleSaveAction());
     }
+    private void onShowPro(){
 
+    }
     private void handleSaveAction() {
         String nitValue = Nit.getText();
         String nombreValue = Nombre.getText();

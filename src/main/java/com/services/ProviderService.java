@@ -2,6 +2,7 @@ package com.services;
 
 import com.helpers.CRUDHandler;
 import okhttp3.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -17,5 +18,9 @@ public class ProviderService {
         body.put("description", description);
         return CRUDHandler.getInstance()
                 .post("/provider", body.toString());
+    }
+    public static JSONArray getAll() throws IOException{
+        return CRUDHandler.getInstance()
+                    .getAll("/provider");
     }
 }

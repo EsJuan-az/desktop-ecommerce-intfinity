@@ -1,4 +1,5 @@
 package com.controllers;
+import com.helpers.CRUDHandler;
 import com.helpers.GUIHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -39,7 +40,7 @@ public class LoginController {
 
                 //Obtenemos el usuario de la respuesta
                 user = response.getJSONObject("result");
-
+                CRUDHandler.setCompanyId( user.getInt("CompanyId") );
                 //Cargamos la pantalla principal.
                 GUIHandler.loadPrincipal( user );
             } else {
@@ -53,6 +54,8 @@ public class LoginController {
             e.printStackTrace();
             GUIHandler.displayError("Error al cargar la vista", null, "No se logró cargar esta vista, intentelo denuevo en unos segundos o comuniquese con un responsable.");
         }
+
+
 
     }
 }
