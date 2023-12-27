@@ -17,14 +17,20 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController">
-    <TabPane layoutX="77.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab text="Untitled Tab 1" />
-        <Tab text="Untitled Tab 2" />
-        <Tab text="Untitled Tab">
+    <TabPane fx:id="myTabPane" layoutX="77.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab fx:id="tabord" text="tab1">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
+        <Tab fx:id="tabcomp" text="tab2">
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
+        <Tab fx:id="Tabpro" text="tab3">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <VBox layoutX="14.0" prefHeight="283.0" prefWidth="129.0">
+                  <VBox layoutX="20.0" layoutY="20.0" prefHeight="280.0" prefWidth="120.0">
                      <children>
                         <Label text="Nit">
                            <font>
@@ -58,7 +64,7 @@
                         <TextField fx:id="Descripcion" />
                      </children>
                   </VBox>
-                  <Button fx:id="SavePro" layoutX="25.0" layoutY="311.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" text="Guardar">
+                  <Button fx:id="SavePro" layoutX="25.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Guardar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -69,7 +75,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="SavePro1" layoutX="25.0" layoutY="387.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" text="Agregar">
+                  <Button fx:id="SavePro1" layoutX="25.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Agregar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -81,7 +87,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="SavePro11" layoutX="25.0" layoutY="465.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" text="Eliminar">
+                  <Button fx:id="SavePro11" layoutX="25.0" layoutY="420.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Eliminar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -93,7 +99,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="SavePro111" layoutX="25.0" layoutY="542.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="107.0" text="Editar">
+                  <Button fx:id="SavePro111" layoutX="25.0" layoutY="470.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Editar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -105,6 +111,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+<<<<<<< HEAD
                   <TableView fx:id="TabPro" layoutX="318.0" layoutY="66.0" prefHeight="490.0" prefWidth="736.0">
                      <columns>
                         <TableColumn prefWidth="75.0" text="NIT" />
@@ -114,11 +121,22 @@
                         <TableColumn prefWidth="75.0" text="Correo" />
                         <TableColumn prefWidth="75.0" text="Descripcion" />
                      </columns>
+=======
+                  <TableView fx:id="TabPro" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
+                      <columns>
+                          <TableColumn text="Nombre" fx:id="nameColumn" />
+                          <TableColumn text="NIT" fx:id="nitColumn" />
+                          <TableColumn text="Dirección" fx:id="directionColumn" />
+                          <TableColumn text="Teléfono" fx:id="phoneColumn" />
+                          <TableColumn text="Email" fx:id="emailColumn" />
+                          <TableColumn text="Descripción" fx:id="descriptionColumn" />
+                      </columns>
+>>>>>>> 65507f577fca8ecd5f24000f753c7b45344fe3d4
                   </TableView>
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab text="Untitled Tab">
+        <Tab fx:id="tabclient" text="tab4">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -142,7 +160,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></TextField>
-                  <TableView layoutX="252.0" layoutY="15.0" prefHeight="393.0" prefWidth="889.0">
+                  <TableView layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
                      <columns>
                         <TableColumn prefWidth="89.0" text="DNI" />
                         <TableColumn prefWidth="89.0" text="Nombre" />
@@ -197,7 +215,7 @@
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab text="Untitled Tab">
+        <Tab fx:id="tabproduc" text="Tab5">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -254,14 +272,19 @@
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab text="Untitled Tab">
+        <Tab fx:id="tabinfor" text="Tab6">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
+      <Tab fx:id="tanconfig" text="Tab7">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
     </TabPane>
     <VBox fx:id="MenudesP" layoutX="-14.0" layoutY="50.0" prefHeight="402.0" prefWidth="97.0" spacing="10.0" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="1197.0" AnchorPane.topAnchor="50.0">
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="ShowOrd" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Ordenes" />
             </tooltip>
@@ -275,7 +298,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="ShowCom" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Compras" />
             </tooltip>
@@ -289,7 +312,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="ShowPro" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Proveedores" />
             </tooltip>
@@ -303,7 +326,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="ShowClient" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Clientes" />
             </tooltip>
@@ -317,7 +340,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="ShowProduc" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Productos" />
             </tooltip>
@@ -331,7 +354,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="ShowInfor" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Informes" />
             </tooltip>
@@ -345,7 +368,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="ShowConfig" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Configuracion" />
             </tooltip>
