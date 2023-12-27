@@ -17,6 +17,6 @@ public class ProviderService {
                 "    \"description\": \"" + description + "\"\r\n" +
                 "}";
         return CRUDHandler.getInstance()
-                .post("https://intfinity-enterprise-backend.onrender.com/api/company/1/provider", body);
+                .post("/provider", body);
     }
 }

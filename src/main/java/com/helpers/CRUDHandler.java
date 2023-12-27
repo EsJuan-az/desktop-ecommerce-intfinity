@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 public class CRUDHandler {
     private static CRUDHandler instance;
+    private static final String API = "https://intfinity-enterprise-backend.onrender.com/api/company/1";
     public static CRUDHandler getInstance(){
         if( CRUDHandler.instance == null ) {
             CRUDHandler.instance = new CRUDHandler();
@@ -23,7 +24,7 @@ public class CRUDHandler {
     public JSONObject post(String URL, String json ) throws IOException {
         RequestBody body = RequestBody.create(json, this.mediaType);
         Request request = new Request.Builder()
-                .url(URL)
+                .url(API + URL)
                 .post(body)
                 .build();
         try (Response response = this.client.newCall(request).execute()) {
