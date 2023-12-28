@@ -56,6 +56,7 @@ public class ProviderTab {
     }
     public void handleSaveProvider() {
         //Obtiene los valores
+        Integer id = principalController.getPProvideridField().getText();
         String nitValue = principalController.getPProviderNITField().getText();
         String nombreValue = principalController.getPProviderNameField().getText();
         String direccionValue = principalController.getPProviderDirectionField().getText();
@@ -63,7 +64,7 @@ public class ProviderTab {
         String correoValue = principalController.getPProviderEmailField().getText();
         String descripcionValue = principalController.getPProviderDescriptionField().getText();
         //Tratamos de hacer la petición
-        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+        Provider newProvider = new Provider(id, nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
 
 
         if (nitValue.isEmpty() || nombreValue.isEmpty() || numeroValue.isEmpty() || correoValue.isEmpty() || direccionValue.isEmpty() ) {
@@ -95,7 +96,7 @@ public class ProviderTab {
         String numeroValue = principalController.getPProviderPhoneField().getText();
         String correoValue = principalController.getPProviderEmailField().getText();
         String descripcionValue = principalController.getPProviderDescriptionField().getText();
-        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+        Provider newProvider = new Provider(id, nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
         this.handleClearProviderFields();
 
         try {
