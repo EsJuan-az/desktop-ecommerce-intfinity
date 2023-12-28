@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import java.io.IOException;
 
+import static com.helpers.GUIHandler.displayMessage;
 
 
 public class PrincipalController {
@@ -181,6 +182,9 @@ public class PrincipalController {
         try {
             JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
             System.out.println(respuestagregarP.toString());
+            String title = "Successful", headerText = null, content = "Usuario guardado exitosamente";
+            displayMessage(title, headerText, content);
+
 
         } catch (Exception e) {
             // Manejar la excepción, posiblemente mostrar un mensaje al usuario
