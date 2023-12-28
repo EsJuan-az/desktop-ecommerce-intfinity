@@ -51,7 +51,9 @@ public class GUIHandler{
 
     public static void loadPrincipal( JSONObject user ) throws IOException{
         //Obtiene la vista y se carga.
+
         FXMLLoader fxmlLoader = new FXMLLoader(sceneClass.getResource("Principal.fxml"));
+        System.out.println( fxmlLoader );
         //Carga la escena principal y crea la escena
         Parent root = fxmlLoader.load();
         PrincipalController controller = fxmlLoader.getController();

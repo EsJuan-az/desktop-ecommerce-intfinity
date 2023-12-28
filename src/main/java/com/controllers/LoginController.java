@@ -43,7 +43,6 @@ public class LoginController {
             //En el administrador de peticiones añadimos el id de empresa
             CRUDHandler.getInstance()
                 .setCompanyId( user.getInt("CompanyId") );
-
             //Cargamos la pantalla principal.
             GUIHandler.loadPrincipal( user );
 
