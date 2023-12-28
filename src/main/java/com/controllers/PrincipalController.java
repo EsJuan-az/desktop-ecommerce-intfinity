@@ -62,6 +62,9 @@ public class PrincipalController {
     private Button PShowDataButton;
     @FXML
     private Button PShowConfigButton;
+    @FXML
+    private Button AddProvider;
+
 
     //Tabs
     @FXML
@@ -98,6 +101,7 @@ public class PrincipalController {
 
     @FXML
     public void initialize() {
+        AddProvider.setOnAction(e -> addPro());
         PShowProvidersButton.setOnAction(e -> onShowPro());
         PShowOrderButton.setOnAction(e -> onShowOrd());
         PShowPurchasesButton.setOnAction(e -> onShowCom());
@@ -107,6 +111,12 @@ public class PrincipalController {
         PShowConfigButton.setOnAction(e -> onShowConfig());
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         PSaveProviderButton.setOnAction(e -> handleSaveProvider());
+        PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("nit"));
+        PProviderDirectionCol.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("correo"));
+        PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
     }
 
     private boolean providersLoaded = false;
@@ -172,6 +182,37 @@ public class PrincipalController {
         PMainTabPane.getSelectionModel().select(PTabPurchases);
     }
 
+    private void clearProviderFields() {
+        PProviderNITField.setText("");
+        PProviderNameField.setText("");
+        PProviderDirectionField.setText("");
+        PProviderPhoneField.setText("");
+        PProviderEmailField.setText("");
+        PProviderDescriptionField.setText("");
+    }
+
+
+    private void addPro(){
+        String nitValue = PProviderNITField.getText();
+        String nombreValue = PProviderNameField.getText();
+        String direccionValue = PProviderDirectionField.getText();
+        String numeroValue = PProviderPhoneField.getText();
+        String correoValue = PProviderEmailField.getText();
+        String descripcionValue = PProviderDescriptionField.getText();
+        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+        clearProviderFields();
+
+        try {
+            String title = "Successful", headerText = null, content = "Proveedor Agregado exitosamente";
+            displayMessage(title, headerText, content);
+            ObservableList<Provider> providersCharge = PProviderTable.getItems(); // Obtener la lista actual de proveedores
+            providersCharge.add(newProvider); // Agregar el nuevo proveedor
+            PProviderTable.refresh(); // Refrescar la tabla
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void handleSaveProvider() {
         String nitValue = PProviderNITField.getText();
         String nombreValue = PProviderNameField.getText();
@@ -179,12 +220,18 @@ public class PrincipalController {
         String numeroValue = PProviderPhoneField.getText();
         String correoValue = PProviderEmailField.getText();
         String descripcionValue = PProviderDescriptionField.getText();
+
+        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+
         try {
-            JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
+            JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
             System.out.println(respuestagregarP.toString());
+
+            // Mensaje de éxito
             String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
             displayMessage(title, headerText, content);
 
+            // Actualizar la tabla
 
         } catch (Exception e) {
             // Manejar la excepción, posiblemente mostrar un mensaje al usuario

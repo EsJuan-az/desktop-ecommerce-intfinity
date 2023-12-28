@@ -75,7 +75,7 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button fx:id="SavePro1" layoutX="25.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Agregar">
+                  <Button fx:id="AddProvider" layoutX="25.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Agregar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -113,12 +113,12 @@
                   </Button>
                   <TableView fx:id="PProviderTable" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
                       <columns>
-                          <TableColumn text="Nombre" fx:id="PProviderNameCol" />
-                          <TableColumn text="NIT" fx:id="PProviderNITCol" />
-                          <TableColumn text="Dirección" fx:id="PProviderDirectionCol" />
-                          <TableColumn text="Teléfono" fx:id="PProviderPhoneCol" />
-                          <TableColumn text="Email" fx:id="PProviderEmailCol" />
-                          <TableColumn text="Descripción" fx:id="PProviderDescCol" />
+                          <TableColumn fx:id="PProviderNameCol" text="Nombre" />
+                          <TableColumn fx:id="PProviderNITCol" text="NIT" />
+                          <TableColumn fx:id="PProviderDirectionCol" text="Dirección" />
+                          <TableColumn fx:id="PProviderPhoneCol" text="Teléfono" />
+                          <TableColumn fx:id="PProviderEmailCol" text="Email" />
+                          <TableColumn fx:id="PProviderDescCol" text="Descripción" />
                       </columns>
                   </TableView>
                </children></AnchorPane>
