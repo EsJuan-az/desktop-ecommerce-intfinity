@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController" stylesheets="@assets/css/Principal.css">
     <TabPane fx:id="myTabPane" layoutX="77.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
         <Tab fx:id="tabord" text="tab1">
          <content>
@@ -111,14 +111,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView fx:id="TabPro" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
+                  <TableView fx:id="TabPro" layoutX="176.0" layoutY="36.0" prefHeight="261.0" prefWidth="992.0">
                       <columns>
-                          <TableColumn text="Nombre" fx:id="nameColumn" />
-                          <TableColumn text="NIT" fx:id="nitColumn" />
-                          <TableColumn text="Dirección" fx:id="directionColumn" />
-                          <TableColumn text="Teléfono" fx:id="phoneColumn" />
-                          <TableColumn text="Email" fx:id="emailColumn" />
-                          <TableColumn text="Descripción" fx:id="descriptionColumn" />
+                          <TableColumn fx:id="nameColumn" text="Nombre" />
+                          <TableColumn fx:id="nitColumn" text="NIT" />
+                          <TableColumn fx:id="directionColumn" text="Dirección" />
+                          <TableColumn fx:id="phoneColumn" prefWidth="232.0" text="Teléfono" />
+                          <TableColumn fx:id="emailColumn" prefWidth="251.0" text="Email" />
+                          <TableColumn fx:id="descriptionColumn" prefWidth="256.0" text="Descripción" />
                       </columns>
                   </TableView>
                </children></AnchorPane>
@@ -271,8 +271,8 @@
         </content>
       </Tab>
     </TabPane>
-    <VBox fx:id="MenudesP" layoutX="-14.0" layoutY="50.0" prefHeight="402.0" prefWidth="97.0" spacing="10.0" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="1197.0" AnchorPane.topAnchor="50.0">
-        <Button fx:id="ShowOrd" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+    <VBox fx:id="MenudesP" layoutY="172.0" prefHeight="402.0" prefWidth="59.0" spacing="10.0" AnchorPane.bottomAnchor="146.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1221.0" AnchorPane.topAnchor="172.0">
+        <Button fx:id="ShowOrd" mnemonicParsing="false" prefHeight="48.0" prefWidth="101.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Ordenes" />
             </tooltip>
@@ -285,7 +285,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowCom" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Compras" />
@@ -299,7 +300,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowPro" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Proveedores" />
@@ -313,7 +315,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowClient" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Clientes" />
@@ -327,7 +330,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowProduc" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Productos" />
@@ -341,7 +345,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowInfor" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Informes" />
@@ -355,7 +360,8 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
         <Button fx:id="ShowConfig" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Configuracion" />
@@ -369,11 +375,12 @@
             </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
     </VBox>
     <Button fx:id="BotonMenu" mnemonicParsing="false">
         <graphic>
-            <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@assets/img/menu.png" />
                 </image>
