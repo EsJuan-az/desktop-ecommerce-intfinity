@@ -8,10 +8,11 @@ import java.io.IOException;
 
 public class CRUDHandler {
     private static CRUDHandler instance;
-    private static String API = "https://intfinity-enterprise-backend.onrender.com/api/company/1";
+    private String API = "https://intfinity-enterprise-backend.onrender.com/api";
+    private int companyId;
 
-    public static void setCompanyId(int CompanyId) {
-        // CRUDHandler.API = "https://intfinity-enterprise-backend.onrender.com/api/company/" + CompanyId;
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public static CRUDHandler getInstance() {
@@ -29,6 +30,10 @@ public class CRUDHandler {
         this.mediaType = MediaType.parse("application/json");
     }
 
+
+
+
+
     public JSONObject post(String URL, String json) throws IOException {
         RequestBody body = RequestBody.create(json, this.mediaType);
         Request request = new Request.Builder()
@@ -36,10 +41,24 @@ public class CRUDHandler {
                 .post(body)
                 .build();
         try (Response response = this.client.newCall(request).execute()) {
+            //Obtiene la respuesta
             assert response.body() != null;
-            return new JSONObject(response.body().string());
+            String responseBody = response.body().string();
+            System.out.println( responseBody );
+            JSONObject jsonObject = new JSONObject(responseBody);
+
+            //Maneja la respuesta.
+            if(jsonObject.has("result") && jsonObject.get("result") instanceof JSONObject) {
+                return jsonObject.getJSONObject("result");
+            } else {
+                // Manejar el caso en que la respuesta no contenga un arreglo JSON bajo la clave "result"
+                throw new JSONException("La clave 'result' no está presente o no es un objeto JSON en la respuesta: " + responseBody);
+            }
         }
     }
+
+
+
 
     public JSONArray getAll(String URL) throws IOException {
         Request request = new Request.Builder()
@@ -47,12 +66,12 @@ public class CRUDHandler {
                 .get()
                 .build();
         try (Response response = this.client.newCall(request).execute()) {
+            //Obtiene la respuesta.
+            assert response.body() != null;
             String responseBody = response.body().string(); // obtiene la respuesta como String
-
-            // Imprimir la respuesta para depuración
-            System.out.println("Response: " + responseBody);
-
             JSONObject jsonObject = new JSONObject(responseBody);
+
+            //Maneja la respuesta
             if(jsonObject.has("result") && jsonObject.get("result") instanceof JSONArray) {
                 return jsonObject.getJSONArray("result");
             } else {
@@ -63,14 +82,28 @@ public class CRUDHandler {
     }
 
 
+
+
+
+
     public JSONObject getOne(String URL) throws IOException {
         Request request = new Request.Builder()
                 .url(API + URL)
                 .get() // Corregido aquí también: no se debe usar un cuerpo de solicitud con GET
                 .build();
         try (Response response = this.client.newCall(request).execute()) {
+            //Obtiene la respuesta.
             assert response.body() != null;
-            return new JSONObject(response.body().string());
+            String responseBody = response.body().string();
+            JSONObject jsonObject = new JSONObject(responseBody);
+
+            //Maneja la respuesta
+            if(jsonObject.has("result") && jsonObject.get("result") instanceof JSONObject) {
+                return jsonObject.getJSONObject("result");
+            } else {
+                // Manejar el caso en que la respuesta no contenga un arreglo JSON bajo la clave "result"
+                throw new JSONException("La clave 'result' no está presente o no es un objeto JSON en la respuesta: " + responseBody);
+            }
         }
     }
 }

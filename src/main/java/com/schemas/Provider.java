@@ -1,4 +1,4 @@
-package com.clases;
+package com.schemas;
 
 import javafx.beans.property.SimpleStringProperty;
 

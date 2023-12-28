@@ -1,6 +1,6 @@
 package com.controllers;
 
-import com.clases.Provider;
+import com.schemas.Provider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,116 +26,100 @@ public class PrincipalController {
 
     @FXML
     private Button BotonMenu;
+    //Provider Form field
+    @FXML
+    private Button PSaveProviderButton;
+    @FXML
+    private TextField PProviderNITField;
+    @FXML
+    private TextField PProviderNameField;
+    @FXML
+    private TextField PProviderDirectionField;
+    @FXML
+    private TextField PProviderPhoneField;
+    @FXML
+    private TextField PProviderEmailField;
+    @FXML
+    private TextField PProviderDescriptionField;
 
+    //Tab Pane
     @FXML
-    private Button SavePro;
+    private TabPane PMainTabPane;
 
+    //Change tab buttons.
     @FXML
-    private TextField Nit;
+    private Button PShowProvidersButton;
+    @FXML
+    private Button PShowOrderButton;
+    @FXML
+    private Button PShowPurchasesButton;
+    @FXML
+    private Button PShowClientButton;
+    @FXML
+    private Button PShowProductButton;
+    @FXML
+    private Button PShowDataButton;
+    @FXML
+    private Button PShowConfigButton;
 
+    //Tabs
     @FXML
-    private TextField Nombre;
+    private Tab PTabProviders;
+    @FXML
+    private Tab PTabOrders;
+    @FXML
+    private Tab PTabPurchases;
+    @FXML
+    private Tab PTabCustomers;
+    @FXML
+    private Tab PTabProducts;
+    @FXML
+    private Tab PTabData;
+    @FXML
+    private Tab PTabConfig;
 
-    @FXML
-    private TextField DireccionPro;
 
+    //Table and columns
     @FXML
-    private TextField Numero;
-
+    private TableView<Provider> PProviderTable;
     @FXML
-    private TextField Correo;
-
+    private TableColumn<Provider, String> PProviderNameCol;
     @FXML
-    private TabPane myTabPane;
-
+    private TableColumn<Provider, String> PProviderNITCol;
     @FXML
-    private TextField Descripcion;
-
+    private TableColumn<Provider, String> PProviderDirectionCol;
     @FXML
-    private Button ShowPro;
-
+    private TableColumn<Provider, String> PProviderPhoneCol;
     @FXML
-    private Button ShowOrd;
-
+    private TableColumn<Provider, String> PProviderEmailCol;
     @FXML
-    private Button ShowCom;
-
-    @FXML
-    private Button ShowClient;
-
-    @FXML
-    private Button ShowProduc;
-
-    @FXML
-    private Button ShowInfor;
-
-    @FXML
-    private Button ShowConfig;
-
-    @FXML
-    private Tab Tabpro;
-
-    @FXML
-    private Tab tabord;
-
-    @FXML
-    private Tab tabcomp;
-
-    @FXML
-    private Tab tabclient;
-
-    @FXML
-    private Tab tabproduc;
-
-    @FXML
-    private Tab tabinfor;
-
-    @FXML
-    private Tab tanconfig;
-
-    @FXML
-    private TableView<Provider> TabPro;
-    @FXML
-    private TableColumn<Provider, String> nameColumn;
-    @FXML
-    private TableColumn<Provider, String> nitColumn;
-    @FXML
-    private TableColumn<Provider, String> directionColumn;
-    @FXML
-    private TableColumn<Provider, String> phoneColumn;
-    @FXML
-    private TableColumn<Provider, String> emailColumn;
-    @FXML
-    private TableColumn<Provider, String> descriptionColumn;
+    private TableColumn<Provider, String> PProviderDescCol;
 
     @FXML
     public void initialize() {
-        /*this.user.getString("rol");
-        this.user.getString("name");
-        this.user.getString("last_name");*/
-        ShowPro.setOnAction(e -> onShowPro());
-        ShowOrd.setOnAction(e -> onShowOrd());
-        ShowCom.setOnAction(e -> onShowCom());
-        ShowClient.setOnAction(e -> onShowClient());
-        ShowProduc.setOnAction(e -> onShowProduc());
-        ShowInfor.setOnAction(e -> onShowInfor());
-        ShowConfig.setOnAction(e -> onShowConfig());
+        PShowProvidersButton.setOnAction(e -> onShowPro());
+        PShowOrderButton.setOnAction(e -> onShowOrd());
+        PShowPurchasesButton.setOnAction(e -> onShowCom());
+        PShowClientButton.setOnAction(e -> onShowClient());
+        PShowProductButton.setOnAction(e -> onShowProduc());
+        PShowDataButton.setOnAction(e -> onShowInfor());
+        PShowConfigButton.setOnAction(e -> onShowConfig());
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
-        SavePro.setOnAction(e -> handleSaveAction());
+        PSaveProviderButton.setOnAction(e -> handleSaveProvider());
     }
 
-    private boolean isDataLoaded = false;
+    private boolean providersLoaded = false;
     private void onShowPro() {
         // Cambia siempre a la pestaña correspondiente, independientemente de la carga de datos
-        myTabPane.getSelectionModel().select(Tabpro);
+        PMainTabPane.getSelectionModel().select(PTabProviders);
 
         // Si los datos aún no se han cargado, entonces los carga
-        if (!isDataLoaded) {
-            loadData();
+        if (!providersLoaded) {
+            loadProviders();
         }
-    }
 
-    private void loadData() {
+    }
+    private void loadProviders() {
         try {
             JSONArray jsonArray = ProviderService.getAll();
             ObservableList<Provider> providers = FXCollections.observableArrayList();
@@ -152,16 +136,16 @@ public class PrincipalController {
                 ));
             }
 
-            TabPro.setItems(providers);
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-            nitColumn.setCellValueFactory(new PropertyValueFactory<>("nit"));
-            directionColumn.setCellValueFactory(new PropertyValueFactory<>("direction"));
-            phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
-            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+            PProviderTable.setItems(providers);
+            PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+            PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("nit"));
+            PProviderDirectionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
+            PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+            PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+            PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
             // Marcar que los datos se han cargado para evitar recargas en futuras llamadas
-            isDataLoaded = true;
+            providersLoaded = true;
 
         } catch (IOException e) {
             e.printStackTrace(); // Aquí deberías manejar el error más apropiadamente
@@ -169,33 +153,33 @@ public class PrincipalController {
     }
 
     private void onShowOrd(){
-        myTabPane.getSelectionModel().select(tabord);
+        PMainTabPane.getSelectionModel().select(PTabOrders);
     }
     private void onShowClient(){
-        myTabPane.getSelectionModel().select(tabclient);
+        PMainTabPane.getSelectionModel().select(PTabCustomers);
     }
     private void onShowProduc(){
-        myTabPane.getSelectionModel().select(tabproduc);
+        PMainTabPane.getSelectionModel().select(PTabProducts);
     }
     private void onShowInfor(){
-        myTabPane.getSelectionModel().select(tabinfor);
+        PMainTabPane.getSelectionModel().select(PTabData);
     }
     private void onShowConfig(){
-        myTabPane.getSelectionModel().select(tanconfig);
+        PMainTabPane.getSelectionModel().select(PTabConfig);
     }
     private void onShowCom(){
-        myTabPane.getSelectionModel().select(tabcomp
+        PMainTabPane.getSelectionModel().select(PTabPurchases
 
         );
     }
 
-    private void handleSaveAction() {
-        String nitValue = Nit.getText();
-        String nombreValue = Nombre.getText();
-        String direccionValue = DireccionPro.getText();
-        String numeroValue = Numero.getText();
-        String correoValue = Correo.getText();
-        String descripcionValue = Descripcion.getText();
+    private void handleSaveProvider() {
+        String nitValue = PProviderNITField.getText();
+        String nombreValue = PProviderNameField.getText();
+        String direccionValue = PProviderDirectionField.getText();
+        String numeroValue = PProviderPhoneField.getText();
+        String correoValue = PProviderEmailField.getText();
+        String descripcionValue = PProviderDescriptionField.getText();
         try {
             JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
             System.out.println(respuestagregarP.toString());
