@@ -232,7 +232,9 @@ public class PrincipalController {
 
             try {
                 JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
+                int id = respuestagregarP.getInt("id");
                 System.out.println(respuestagregarP.toString());
+                System.out.println(id);
 
                 // Mensaje de éxito
                 String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
