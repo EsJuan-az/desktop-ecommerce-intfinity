@@ -1,4 +1,4 @@
-module com.controllers {
+module com.intfinty.appintfinity {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -17,7 +17,7 @@ module com.controllers {
     opens com.controllers to javafx.fxml;
     opens com.schemas to javafx.base, javafx.fxml; // Asegúrate de que este es el paquete correcto de tu clase Provider
     opens com.services to javafx.fxml, javafx.base; // Abre si es necesario para reflexión
-    
+
     exports com.controllers;
     exports com.services;
     // No es necesario exportar com.clases si solo se utiliza dentro del mismo módulo

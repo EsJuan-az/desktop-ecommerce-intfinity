@@ -35,6 +35,13 @@ public class GUIHandler{
         alert.setContentText(content);
         alert.showAndWait();;
     }
+    public static void displayMessage(String title, String headerText, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(content);
+        alert.showAndWait();;
+    }
     public static void loadLogin() throws IOException {
         //Obtiene la vista
         FXMLLoader fxmlLoader = new FXMLLoader(sceneClass.getResource("Login.fxml"));
