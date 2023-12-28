@@ -168,9 +168,7 @@ public class PrincipalController {
         PMainTabPane.getSelectionModel().select(PTabConfig);
     }
     private void onShowCom(){
-        PMainTabPane.getSelectionModel().select(PTabPurchases
-
-        );
+        PMainTabPane.getSelectionModel().select(PTabPurchases);
     }
 
     private void handleSaveProvider() {

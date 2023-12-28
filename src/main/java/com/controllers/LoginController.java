@@ -38,7 +38,7 @@ public class LoginController {
         //Validación
         try {
             //Obtenemos el usuario de la respuesta
-            JSONObject user = UserService.login(email, password);;
+            JSONObject user = UserService.login(email, password);
 
             //En el administrador de peticiones añadimos el id de empresa
             CRUDHandler.getInstance()

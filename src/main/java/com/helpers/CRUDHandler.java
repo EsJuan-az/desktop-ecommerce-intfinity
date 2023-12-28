@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class CRUDHandler {
     private static CRUDHandler instance;
-    private String API = "https://intfinity-enterprise-backend.onrender.com/api";
+    private final String API = "https://intfinity-enterprise-backend.onrender.com/api";
     public int companyId;
 
     public void setCompanyId(int companyId) {
@@ -22,8 +22,8 @@ public class CRUDHandler {
         return CRUDHandler.instance;
     }
 
-    private OkHttpClient client;
-    private MediaType mediaType;
+    private final OkHttpClient client;
+    private final MediaType mediaType;
 
     public CRUDHandler() {
         this.client = new OkHttpClient();
