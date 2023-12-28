@@ -182,7 +182,7 @@ public class PrincipalController {
         try {
             JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
             System.out.println(respuestagregarP.toString());
-            String title = "Successful", headerText = null, content = "Usuario guardado exitosamente";
+            String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
             displayMessage(title, headerText, content);
 
 
