@@ -2,18 +2,14 @@ package com.controllers;
 
 import com.controllers.subcontrollers.ProviderTab;
 import com.schemas.Provider;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
-import com.services.ProviderService;
-import org.json.JSONObject;
-import org.json.JSONArray;
-import java.io.IOException;
 
-import static com.helpers.GUIHandler.displayMessage;
+import org.json.JSONObject;
+
 
 
 public class PrincipalController extends ProviderTab {
@@ -81,6 +77,9 @@ public class PrincipalController extends ProviderTab {
     private Button PShowDataButton;
     @FXML
     private Button PShowConfigButton;
+    @FXML
+    private Button AddProvider;
+
 
     //Tabs
     @FXML
@@ -103,6 +102,7 @@ public class PrincipalController extends ProviderTab {
 
     @FXML
     public void initialize() {
+
         //Initialize subcontrollers
         providerTabController.setPrincipalController(this);
         //Show Buttons
@@ -122,6 +122,7 @@ public class PrincipalController extends ProviderTab {
         PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         //Event buttons
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
+        AddProvider.setOnAction(e -> providerTabController.handleAddProvider());
         PSaveProviderButton.setOnAction(e -> providerTabController.handleSaveProvider());
     }
 
@@ -151,12 +152,11 @@ public class PrincipalController extends ProviderTab {
     private void onShowCom(){
         PMainTabPane.getSelectionModel().select(PTabPurchases);
     }
+
+
     private void toggleVBoxVisibility() {
         MenudesP.setVisible(!MenudesP.isVisible());
     }
-
-
-
 
 
 

@@ -6,6 +6,7 @@ import org.json.JSONObject;
 public class Provider {
     public static Provider fromJSON(JSONObject obj){
         return new Provider(
+                obj.getInt("id"),
                 obj.getString("name"),
                 obj.getString("NIT"),
                 obj.getString("direction"),
@@ -20,7 +21,7 @@ public class Provider {
     private final SimpleStringProperty phone;
     private final SimpleStringProperty email;
     private final SimpleStringProperty description;
-    public Provider(String name, String NIT, String direction, String phone, String email, String description) {
+    public Provider(int id, String name, String NIT, String direction, String phone, String email, String description) {
         this.name = new SimpleStringProperty(name);
         this.NIT = new SimpleStringProperty(NIT);
         this.direction = new SimpleStringProperty(direction);
