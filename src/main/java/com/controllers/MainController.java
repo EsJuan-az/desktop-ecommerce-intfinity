@@ -12,6 +12,7 @@ public class MainController extends Application {
         //Seteamos los valores del escenario y la clase.
         GUIHandler.setStage( stage );
         GUIHandler.setClass( getClass() );
+
         //Carga el login.
         GUIHandler.loadLogin();
     }

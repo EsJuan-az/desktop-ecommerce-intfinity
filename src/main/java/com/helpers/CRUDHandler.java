@@ -8,10 +8,11 @@ import java.io.IOException;
 
 public class CRUDHandler {
     private static CRUDHandler instance;
-    private static String API = "https://intfinity-enterprise-backend.onrender.com/api/company/1";
+    private String API = "https://intfinity-enterprise-backend.onrender.com/api";
+    private int companyId;
 
-    public static void setCompanyId(int CompanyId) {
-        // CRUDHandler.API = "https://intfinity-enterprise-backend.onrender.com/api/company/" + CompanyId;
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 
     public static CRUDHandler getInstance() {
@@ -43,6 +44,7 @@ public class CRUDHandler {
             //Obtiene la respuesta
             assert response.body() != null;
             String responseBody = response.body().string();
+            System.out.println( responseBody );
             JSONObject jsonObject = new JSONObject(responseBody);
 
             //Maneja la respuesta.

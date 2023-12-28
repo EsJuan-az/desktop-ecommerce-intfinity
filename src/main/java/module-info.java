@@ -15,7 +15,7 @@ module com.intfinty.appintfinity {
 
     // Abre los paquetes al módulo javafx.fxml y javafx.base
     opens com.controllers to javafx.fxml;
-    opens com.clases to javafx.base, javafx.fxml; // Asegúrate de que este es el paquete correcto de tu clase Provider
+    opens com.schemas to javafx.base, javafx.fxml; // Asegúrate de que este es el paquete correcto de tu clase Provider
     opens com.services to javafx.fxml, javafx.base; // Abre si es necesario para reflexión
 
     exports com.controllers;

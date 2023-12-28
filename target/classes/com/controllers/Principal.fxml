@@ -111,17 +111,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-<<<<<<< HEAD
-                  <TableView fx:id="TabPro" layoutX="318.0" layoutY="66.0" prefHeight="490.0" prefWidth="736.0">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="NIT" />
-                        <TableColumn prefWidth="75.0" text="Nombre" />
-                        <TableColumn prefWidth="75.0" text="Direccion" />
-                        <TableColumn prefWidth="75.0" text="Numero" />
-                        <TableColumn prefWidth="75.0" text="Correo" />
-                        <TableColumn prefWidth="75.0" text="Descripcion" />
-                     </columns>
-=======
                   <TableView fx:id="TabPro" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
                       <columns>
                           <TableColumn text="Nombre" fx:id="nameColumn" />
@@ -131,7 +120,6 @@
                           <TableColumn text="Email" fx:id="emailColumn" />
                           <TableColumn text="Descripción" fx:id="descriptionColumn" />
                       </columns>
->>>>>>> 65507f577fca8ecd5f24000f753c7b45344fe3d4
                   </TableView>
                </children></AnchorPane>
             </content>
@@ -317,7 +305,7 @@
                 <Tooltip text="Proveedores" />
             </tooltip>
             <graphic>
-                <ImageView fx:id="ShowPro" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@assets/img/repartidor.png" />
                     </image>
