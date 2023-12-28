@@ -17,16 +17,16 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.PrincipalController">
-    <TabPane fx:id="myTabPane" layoutX="77.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
-        <Tab fx:id="tabord" text="tab1">
+    <TabPane fx:id="PMainTabPane" layoutX="77.0" prefHeight="720.0" prefWidth="1197.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab fx:id="PTabOrders" text="tab1">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
          </content></Tab>
-        <Tab fx:id="tabcomp" text="tab2">
+        <Tab fx:id="PTabPurchases" text="tab2">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
          </content></Tab>
-        <Tab fx:id="Tabpro" text="tab3">
+        <Tab fx:id="PTabProviders" text="tab3">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -36,35 +36,35 @@
                            <font>
                               <Font size="13.0" />
                            </font></Label>
-                        <TextField fx:id="Nit" />
+                        <TextField fx:id="PProviderNITField" />
                         <Label text="Nombre">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="Nombre" />
+                        <TextField fx:id="PProviderNameField" />
                         <Label text="Direccion">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="DireccionPro" />
+                        <TextField fx:id="PProviderDirectionField" />
                         <Label text="Numero">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="Numero" />
+                        <TextField fx:id="PProviderPhoneField" />
                         <Label text="Correo">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="Correo" />
+                        <TextField fx:id="PProviderEmailField" />
                         <Label text="Descripcion">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="Descripcion" />
+                        <TextField fx:id="PProviderDescriptionField" />
                      </children>
                   </VBox>
-                  <Button fx:id="SavePro" layoutX="25.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Guardar">
+                  <Button fx:id="PSaveProviderButton" layoutX="25.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Guardar">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -111,20 +111,20 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TableView fx:id="TabPro" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
+                  <TableView fx:id="PProviderTable" layoutX="210.0" layoutY="20.0" prefHeight="460.0" prefWidth="980.0">
                       <columns>
-                          <TableColumn text="Nombre" fx:id="nameColumn" />
-                          <TableColumn text="NIT" fx:id="nitColumn" />
-                          <TableColumn text="Dirección" fx:id="directionColumn" />
-                          <TableColumn text="Teléfono" fx:id="phoneColumn" />
-                          <TableColumn text="Email" fx:id="emailColumn" />
-                          <TableColumn text="Descripción" fx:id="descriptionColumn" />
+                          <TableColumn text="Nombre" fx:id="PProviderNameCol" />
+                          <TableColumn text="NIT" fx:id="PProviderNITCol" />
+                          <TableColumn text="Dirección" fx:id="PProviderDirectionCol" />
+                          <TableColumn text="Teléfono" fx:id="PProviderPhoneCol" />
+                          <TableColumn text="Email" fx:id="PProviderEmailCol" />
+                          <TableColumn text="Descripción" fx:id="PProviderDescCol" />
                       </columns>
                   </TableView>
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab fx:id="tabclient" text="tab4">
+        <Tab fx:id="PTabCustomers" text="tab4">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -203,7 +203,7 @@
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab fx:id="tabproduc" text="Tab5">
+        <Tab fx:id="PTabProducts" text="Tab5">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -260,19 +260,19 @@
                </children></AnchorPane>
             </content>
         </Tab>
-        <Tab fx:id="tabinfor" text="Tab6">
+        <Tab fx:id="PTabData" text="Tab6">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
         </Tab>
-      <Tab fx:id="tanconfig" text="Tab7">
+      <Tab fx:id="PTabConfig" text="Tab7">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
         </content>
       </Tab>
     </TabPane>
     <VBox fx:id="MenudesP" layoutX="-14.0" layoutY="50.0" prefHeight="402.0" prefWidth="97.0" spacing="10.0" AnchorPane.bottomAnchor="268.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="1197.0" AnchorPane.topAnchor="50.0">
-        <Button fx:id="ShowOrd" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="PShowOrderButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Ordenes" />
             </tooltip>
@@ -286,7 +286,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowCom" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="PShowPurchasesButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Compras" />
             </tooltip>
@@ -300,7 +300,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowPro" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
+        <Button fx:id="PShowProvidersButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" textAlignment="CENTER">
             <tooltip>
                 <Tooltip text="Proveedores" />
             </tooltip>
@@ -314,7 +314,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowClient" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="PShowClientButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Clientes" />
             </tooltip>
@@ -328,7 +328,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowProduc" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="PShowProductButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Productos" />
             </tooltip>
@@ -342,7 +342,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowInfor" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="PShowDataButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Informes" />
             </tooltip>
@@ -356,7 +356,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-        <Button fx:id="ShowConfig" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
+        <Button fx:id="PShowConfigButton" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0">
             <tooltip>
                 <Tooltip text="Configuracion" />
             </tooltip>

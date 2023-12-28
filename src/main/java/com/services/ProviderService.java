@@ -16,11 +16,12 @@ public class ProviderService {
         body.put("phone", phone);
         body.put("email", email );
         body.put("description", description);
-        return CRUDHandler.getInstance()
-                .post("/provider", body.toString());
+        CRUDHandler instance = CRUDHandler.getInstance();
+        return instance.post("/company/" + instance.companyId +  "/provider", body.toString());
     }
     public static JSONArray getAll() throws IOException{
-        return CRUDHandler.getInstance()
-                    .getAll("/provider");
+        CRUDHandler instance = CRUDHandler.getInstance();
+
+        return instance.getAll("/company/" + instance.companyId +  "/provider");
     }
 }

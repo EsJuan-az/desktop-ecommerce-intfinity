@@ -16,7 +16,6 @@ public class MainController extends Application {
         //Carga el login.
         GUIHandler.loadLogin();
     }
-
     public static void main(String[] args) {
         //We deploy the login view
         launch();

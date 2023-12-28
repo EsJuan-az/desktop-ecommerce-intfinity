@@ -9,7 +9,7 @@ import java.io.IOException;
 public class CRUDHandler {
     private static CRUDHandler instance;
     private String API = "https://intfinity-enterprise-backend.onrender.com/api";
-    private int companyId;
+    public int companyId;
 
     public void setCompanyId(int companyId) {
         this.companyId = companyId;
