@@ -1,5 +1,6 @@
 package com.controllers;
 
+import com.helpers.GUIHandler;
 import com.schemas.Provider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -223,19 +224,26 @@ public class PrincipalController {
 
         Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
 
-        try {
-            JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
-            System.out.println(respuestagregarP.toString());
 
-            // Mensaje de éxito
-            String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
-            displayMessage(title, headerText, content);
+        if (nitValue.isEmpty() || nombreValue.isEmpty() || numeroValue.isEmpty() || correoValue.isEmpty() || direccionValue.isEmpty() ) {
 
-            // Actualizar la tabla
+            GUIHandler.displayWarning("Campos Vacíos", null, "Por favor, completa todos los campos");
+        }else{
 
-        } catch (Exception e) {
-            // Manejar la excepción, posiblemente mostrar un mensaje al usuario
-            e.printStackTrace();
+            try {
+                JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
+                System.out.println(respuestagregarP.toString());
+
+                // Mensaje de éxito
+                String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
+                displayMessage(title, headerText, content);
+
+                // Actualizar la tabla
+
+            } catch (Exception e) {
+                // Manejar la excepción, posiblemente mostrar un mensaje al usuario
+                e.printStackTrace();
+            }
         }
     }
 
