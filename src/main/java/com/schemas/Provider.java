@@ -41,6 +41,9 @@ public class Provider {
     public String getPhone() { return phone.get(); }
     public String getEmail() { return email.get(); }
     public String getDescription() { return description.get(); }
+    public int getId(){
+        return id.get();
+    }
 
 
 

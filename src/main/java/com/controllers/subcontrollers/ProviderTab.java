@@ -15,10 +15,11 @@ import static com.helpers.GUIHandler.displayMessage;
 
 public class ProviderTab {
 
+    public int id;
     private PrincipalController principalController;
 
     private boolean providersLoaded = false;
-    ObservableList<Provider> providers;
+    public  ObservableList<Provider> providers = FXCollections.observableArrayList();
 
     public void setPrincipalController(PrincipalController principalController) {
         this.principalController = principalController;
@@ -28,8 +29,6 @@ public class ProviderTab {
         if( providersLoaded ) return;
 
         try {
-            //Hacemos una observable list de provider
-            this.providers = FXCollections.observableArrayList();
             //Obtenemos todos los proveedores.
             JSONArray jsonArray = ProviderService.getAll();
             //Recorre el array creando y añadiendo providers a la lista.
@@ -56,7 +55,6 @@ public class ProviderTab {
     }
     public void handleSaveProvider() {
         //Obtiene los valores
-        Integer id = principalController.getPProvideridField().getText();
         String nitValue = principalController.getPProviderNITField().getText();
         String nombreValue = principalController.getPProviderNameField().getText();
         String direccionValue = principalController.getPProviderDirectionField().getText();
@@ -72,9 +70,7 @@ public class ProviderTab {
         }else {
             try {
                 JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
-                int id = respuestagregarP.getInt("id");
-                System.out.println(respuestagregarP.toString());
-                System.out.println(id);
+                id = respuestagregarP.getInt("id");
 
                 // Mensaje de éxito
                 String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";

@@ -56,6 +56,8 @@ public class PrincipalController extends ProviderTab {
     private TableColumn<Provider, String> PProviderEmailCol;
     @FXML
     private TableColumn<Provider, String> PProviderDescCol;
+    @FXML
+    private TableColumn<Provider, Integer> PProviderIdCol;
 
 
     //Tab Pane
@@ -79,6 +81,8 @@ public class PrincipalController extends ProviderTab {
     private Button PShowConfigButton;
     @FXML
     private Button AddProvider;
+    @FXML
+    private Button DeleteButon;
 
 
     //Tabs
@@ -113,6 +117,7 @@ public class PrincipalController extends ProviderTab {
         PShowProductButton.setOnAction(e -> onShowProduc());
         PShowDataButton.setOnAction(e -> onShowInfor());
         PShowConfigButton.setOnAction(e -> onShowConfig());
+        DeleteButon.setOnAction(e -> deleteUserSelected());
         //Provider column fields
         PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("NIT"));
@@ -120,10 +125,13 @@ public class PrincipalController extends ProviderTab {
         PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        PProviderIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         //Event buttons
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         AddProvider.setOnAction(e -> providerTabController.handleAddProvider());
         PSaveProviderButton.setOnAction(e -> providerTabController.handleSaveProvider());
+        //inicializador de tableview
+
     }
 
     private void onShowPro() {
@@ -132,6 +140,18 @@ public class PrincipalController extends ProviderTab {
 
         // Si los datos aún no se han cargado, entonces los carga
         providerTabController.loadProviders();
+    }
+
+    //Metodo para eliminar proveedores
+    public void deleteUserSelected(){
+        Provider selectedUser = PProviderTable.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            // Aquí asumimos que userData es tu lista observable
+            providers.remove(selectedUser);
+        } else {
+            // Mostrar algún mensaje de error o notificación si no se seleccionó ningún usuario
+            System.out.println("No se seleccionó ningún usuario para eliminar.");
+        }
     }
 
     private void onShowOrd(){
@@ -228,6 +248,7 @@ public class PrincipalController extends ProviderTab {
     public TableColumn<Provider, String> getPProviderDescCol() {
         return PProviderDescCol;
     }
+    public TableColumn<Provider, Integer> getPProviderIdCol() { return PProviderIdCol; }
 
     public TabPane getPMainTabPane() {
         return PMainTabPane;
