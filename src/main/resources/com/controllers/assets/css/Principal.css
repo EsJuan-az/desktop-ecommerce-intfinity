@@ -1,0 +1,60 @@
+.root {
+    -fx-base: #50C878; /* Un tono de verde esmeralda */
+    -fx-accent: #40A860; /* Un tono de verde ligeramente más oscuro para el contraste */
+}
+
+.button {
+    -fx-background-color: -fx-accent, -fx-base;
+    -fx-background-insets: 0, 1;
+    -fx-text-fill: white;
+}
+
+.label {
+    -fx-text-fill: #2E8B57; /* Un tono de verde más oscuro para etiquetas */
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #50C878;
+}
+
+.tab .tab-label {
+    -fx-text-fill: white;
+}
+
+.table-view {
+    -fx-base: white;
+    -fx-control-inner-background: white;
+    -fx-background-color: white, #50C878;
+    -fx-table-cell-border-color: #50C878;
+}
+
+.text-field {
+    -fx-background-color: white, -fx-base;
+    -fx-background-insets: 0, 1;
+}
+
+.vbox {
+    -fx-background-color: #50C878;
+}
+
+.button:hover {
+    -fx-background-color: #388E3C; /* Verde esmeralda un poco más oscuro para hover */
+}
+
+.table-view {
+    -fx-base: #E8F5E9; /* Fondo claro para las filas */
+    -fx-background-color: #E8F5E9; /* Fondo de la tabla */
+}
+
+.tab-pane {
+    -fx-font-size: 16px;
+    -fx-background-color: #C8E6C9; /* Un tono más claro para las pestañas */
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #A5D6A7; /* Un verde más claro para la pestaña seleccionada */
+}
+
+.tab-pane .tab {
+    -fx-background-color: #E8F5E9; /* Un verde más claro para las pestañas no seleccionadas */
+}
