@@ -121,7 +121,9 @@ public class PrincipalController {
     }
     private void loadProviders() {
         try {
+            //Obtenemos todos los proveedores.
             JSONArray jsonArray = ProviderService.getAll();
+            //Hacemos una observable list de provider
             ObservableList<Provider> providers = FXCollections.observableArrayList();
 
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -135,10 +137,11 @@ public class PrincipalController {
                         obj.getString("description")
                 ));
             }
-
+            //Envía items a la tabla
             PProviderTable.setItems(providers);
+            //Asignar valores de una columna a cada celda.
             PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("nit"));
+            PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("NIT"));
             PProviderDirectionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
             PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
             PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
