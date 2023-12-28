@@ -24,4 +24,18 @@ public class ProviderService {
 
         return instance.getAll("/company/" + instance.companyId +  "/provider");
     }
+
+        // Método para eliminar un proveedor
+        public static JSONObject delete(int providerId) throws IOException {
+            CRUDHandler instance = CRUDHandler.getInstance();
+            return instance.deleteProviders("/company/" + instance.companyId + "/provider/" + providerId);
+        }
+        // Metodo para update
+    public static JSONObject update(int providerId, String name) throws IOException {
+        JSONObject body = new JSONObject();
+        body.put("name", name);
+        CRUDHandler instance = CRUDHandler.getInstance();
+        return instance.update("/company/" + instance.companyId + "/provider/" + providerId, body.toString());
+    }
+
 }

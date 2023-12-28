@@ -30,10 +30,6 @@ public class CRUDHandler {
         this.mediaType = MediaType.parse("application/json");
     }
 
-
-
-
-
     public JSONObject post(String URL, String json) throws IOException {
         RequestBody body = RequestBody.create(json, this.mediaType);
         Request request = new Request.Builder()
@@ -56,7 +52,6 @@ public class CRUDHandler {
             }
         }
     }
-
 
 
 
@@ -83,9 +78,6 @@ public class CRUDHandler {
 
 
 
-
-
-
     public JSONObject getOne(String URL) throws IOException {
         Request request = new Request.Builder()
                 .url(API + URL)
@@ -106,4 +98,33 @@ public class CRUDHandler {
             }
         }
     }
+    public JSONObject deleteProviders(String URL) throws IOException {
+        RequestBody body = RequestBody.create("", this.mediaType); // cuerpo vacío para DELETE
+        Request request = new Request.Builder()
+                .url(API + URL)
+                .delete(body) // Usamos el método delete
+                .build();
+
+        try (Response response = this.client.newCall(request).execute()) {
+            // Obtener la respuesta
+            assert response.body() != null;
+            String responseBody = response.body().string();
+            return new JSONObject(responseBody);
+        }
+    }
+// metodo Update
+        public JSONObject update(String URL, String json) throws IOException {
+            RequestBody body = RequestBody.create(json, this.mediaType);
+            Request request = new Request.Builder()
+                    .url(API + URL)
+                    .put(body) // Usamos el método put con el cuerpo de la solicitud
+                    .build();
+
+            try (Response response = this.client.newCall(request).execute()) {
+                // Obtiene la respuesta
+                assert response.body() != null;
+                String responseBody = response.body().string();
+                return new JSONObject(responseBody);
+            }
+        }
 }

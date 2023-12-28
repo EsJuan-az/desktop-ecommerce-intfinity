@@ -1,8 +1,10 @@
 package com.controllers;
 
 import com.controllers.subcontrollers.ProviderTab;
+import com.helpers.GUIHandler;
 import com.schemas.Provider;
 
+import com.services.ProviderService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -10,6 +12,7 @@ import javafx.scene.layout.VBox;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 
 
 public class PrincipalController extends ProviderTab {
@@ -83,6 +86,8 @@ public class PrincipalController extends ProviderTab {
     private Button AddProvider;
     @FXML
     private Button DeleteButon;
+    @FXML
+    private Button UpdateButton;
 
 
     //Tabs
@@ -102,6 +107,7 @@ public class PrincipalController extends ProviderTab {
     private Tab PTabConfig;
 
 
+
     private final ProviderTab providerTabController = new ProviderTab();
 
     @FXML
@@ -117,7 +123,6 @@ public class PrincipalController extends ProviderTab {
         PShowProductButton.setOnAction(e -> onShowProduc());
         PShowDataButton.setOnAction(e -> onShowInfor());
         PShowConfigButton.setOnAction(e -> onShowConfig());
-        DeleteButon.setOnAction(e -> deleteUserSelected());
         //Provider column fields
         PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("NIT"));
@@ -130,8 +135,55 @@ public class PrincipalController extends ProviderTab {
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
         AddProvider.setOnAction(e -> providerTabController.handleAddProvider());
         PSaveProviderButton.setOnAction(e -> providerTabController.handleSaveProvider());
+        DeleteButon.setOnAction(e -> deleteUserSelected());
+        UpdateButton.setOnAction(e -> upDate());
         //inicializador de tableview
+        PProviderTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Aquí es donde manejas el evento de selección. Por ejemplo:
+                onProviderSelected(newSelection);
+            }
+        });
 
+    }
+
+    int idG = 0;
+    String NitG  = "";
+    String nombreG = "";
+    String CorreoG = "";
+    String DireccionG = "";
+    String DescripcionG = "";
+    String NumeroG = "";
+    private void onProviderSelected(Provider selectedProvider) {
+        Provider selectedUser = PProviderTable.getSelectionModel().getSelectedItem();
+        if(selectedUser != null){
+
+            int id = selectedUser.getId();
+            idG = id;
+            String Nit = selectedUser.getNIT();
+            NitG = Nit;
+            String nombre = selectedUser.getName();
+            nombreG = nombre;
+            String Correo = selectedUser.getEmail();
+            CorreoG = Correo;
+            String Direccion = selectedUser.getDirection();
+            CorreoG = Correo;
+            String Descripcion = selectedUser.getDescription();
+            DescripcionG = Descripcion;
+            String Numero = selectedUser.getPhone();
+            NumeroG =  Numero;
+
+            PProviderNITField.setText(Nit);
+            PProviderNameField.setText(nombre);
+            PProviderEmailField.setText(Correo);
+            PProviderDescriptionField.setText(Descripcion);
+            PProviderPhoneField.setText(Numero);
+            PProviderDirectionField.setText(Direccion);
+
+
+        }else {
+            System.out.printf("gay");
+        }
     }
 
     private void onShowPro() {
@@ -141,18 +193,58 @@ public class PrincipalController extends ProviderTab {
         // Si los datos aún no se han cargado, entonces los carga
         providerTabController.loadProviders();
     }
+    public void upDate(){
+        Provider selectedUser = PProviderTable.getSelectionModel().getSelectedItem();
+        String nitValue = getPProviderNITField().getText();
+        String nombreValue = getPProviderNameField().getText();
+        String direccionValue = getPProviderDirectionField().getText();
+        String numeroValue = getPProviderPhoneField().getText();
+        String correoValue = getPProviderEmailField().getText();
+        String descripcionValue = getPProviderDescriptionField().getText();
+
+        if (nitValue.isEmpty() || nombreValue.isEmpty() || numeroValue.isEmpty() || correoValue.isEmpty() || direccionValue.isEmpty() ) {
+            GUIHandler.displayWarning("Campos Vacíos", null, "Por favor, selecciona una columna con datos");
+
+        }else{
+            try {
+                // Llama al método delete de la clase ProviderService y pasa el ID del proveedor seleccionado
+                JSONObject response = ProviderService.delete(idG);
+                System.out.println("Proveedor editado exitosamente: " + response);
+
+                // Si la eliminación en la base de datos fue exitosa, elimina el proveedor de la lista observable
+                providers.remove(selectedUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Manejar el caso de error aquí - podría ser una notificación al usuario, por ejemplo
+                System.out.println("Error al eliminar el proveedor: " + e.getMessage());
+            }
+        }
+
+    }
 
     //Metodo para eliminar proveedores
-    public void deleteUserSelected(){
+    public void deleteUserSelected() {
         Provider selectedUser = PProviderTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
-            // Aquí asumimos que userData es tu lista observable
-            providers.remove(selectedUser);
+            // Intenta eliminar el proveedor de la base de datos
+            try {
+                // Llama al método delete de la clase ProviderService y pasa el ID del proveedor seleccionado
+                JSONObject response = ProviderService.delete(selectedUser.getId());
+                System.out.println("Proveedor eliminado exitosamente: " + response);
+
+                // Si la eliminación en la base de datos fue exitosa, elimina el proveedor de la lista observable
+                providers.remove(selectedUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Manejar el caso de error aquí - podría ser una notificación al usuario, por ejemplo
+                System.out.println("Error al eliminar el proveedor: " + e.getMessage());
+            }
         } else {
             // Mostrar algún mensaje de error o notificación si no se seleccionó ningún usuario
             System.out.println("No se seleccionó ningún usuario para eliminar.");
         }
     }
+
 
     private void onShowOrd(){
         PMainTabPane.getSelectionModel().select(PTabOrders);
