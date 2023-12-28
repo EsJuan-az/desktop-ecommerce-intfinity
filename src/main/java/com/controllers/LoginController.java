@@ -33,31 +33,32 @@ public class LoginController {
             //Aquí alerta para errores del servidor o de credenciales.
             GUIHandler.displayWarning("Campos Vacíos", null, "Por favor, completa todos los campos para iniciar sesión.");
             return;
+        } else {
+
+            //Validación
+            try {
+                //Obtenemos el usuario de la respuesta
+                JSONObject user = UserService.login(email, password);
+                ;
+
+                //En el administrador de peticiones añadimos el id de empresa
+                CRUDHandler.getInstance()
+                        .setCompanyId(user.getInt("CompanyId"));
+
+                //Cargamos la pantalla principal.
+                GUIHandler.loadPrincipal(user);
+
+            } catch (IOException | AssertionError e) {
+                //Aquí una alerta de error. Para errores de la app.
+                e.printStackTrace();
+                GUIHandler.displayError("Error al cargar la vista", null, "No se logró cargar esta vista, intentelo denuevo en unos segundos o comuniquese con un responsable.");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                //Aquí alerta para errores del servidor o de credenciales.
+                GUIHandler.displayWarning("Credenciales inválidas", null, "Usuario o contraseña incorrectos");
+            }
+
         }
-
-        //Validación
-        try {
-            //Obtenemos el usuario de la respuesta
-            JSONObject user = UserService.login(email, password);;
-
-            //En el administrador de peticiones añadimos el id de empresa
-            CRUDHandler.getInstance()
-                .setCompanyId( user.getInt("CompanyId") );
-
-            //Cargamos la pantalla principal.
-            GUIHandler.loadPrincipal( user );
-
-        } catch (IOException | AssertionError e) {
-            //Aquí una alerta de error. Para errores de la app.
-            e.printStackTrace();
-            GUIHandler.displayError("Error al cargar la vista", null, "No se logró cargar esta vista, intentelo denuevo en unos segundos o comuniquese con un responsable.");
-        }catch(JSONException e ) {
-            e.printStackTrace();
-            //Aquí alerta para errores del servidor o de credenciales.
-            GUIHandler.displayWarning("Credenciales inválidas", null, "Usuario o contraseña incorrectos" );
-        }
-
-
 
     }
 }
