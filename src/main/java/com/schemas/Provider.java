@@ -1,18 +1,28 @@
 package com.schemas;
 
 import javafx.beans.property.SimpleStringProperty;
+import org.json.JSONObject;
 
 public class Provider {
+    public static Provider fromJSON(JSONObject obj){
+        return new Provider(
+                obj.getString("name"),
+                obj.getString("NIT"),
+                obj.getString("direction"),
+                obj.getString("phone"),
+                obj.getString("email"),
+                obj.getString("description")
+        );
+    }
     private final SimpleStringProperty name;
-    private final SimpleStringProperty nit;
+    private final SimpleStringProperty NIT;
     private final SimpleStringProperty direction;
     private final SimpleStringProperty phone;
     private final SimpleStringProperty email;
     private final SimpleStringProperty description;
-
-    public Provider(String name, String nit, String direction, String phone, String email, String description) {
+    public Provider(String name, String NIT, String direction, String phone, String email, String description) {
         this.name = new SimpleStringProperty(name);
-        this.nit = new SimpleStringProperty(nit);
+        this.NIT = new SimpleStringProperty(NIT);
         this.direction = new SimpleStringProperty(direction);
         this.phone = new SimpleStringProperty(phone);
         this.email = new SimpleStringProperty(email);
@@ -21,7 +31,7 @@ public class Provider {
 
     // Getters aquí...
     public String getName() { return name.get(); }
-    public String getNit() { return nit.get(); }
+    public String getNIT() { return NIT.get(); }
     public String getDirection() { return direction.get(); }
     public String getPhone() { return phone.get(); }
     public String getEmail() { return email.get(); }

@@ -1,5 +1,6 @@
 package com.controllers;
 
+import com.controllers.subcontrollers.ProviderTab;
 import com.schemas.Provider;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import static com.helpers.GUIHandler.displayMessage;
 
 
-public class PrincipalController {
+public class PrincipalController extends ProviderTab {
 
     private JSONObject user;
     public void setUser( JSONObject user ){
@@ -27,6 +28,7 @@ public class PrincipalController {
 
     @FXML
     private Button BotonMenu;
+
     //Provider Form field
     @FXML
     private Button PSaveProviderButton;
@@ -42,6 +44,23 @@ public class PrincipalController {
     private TextField PProviderEmailField;
     @FXML
     private TextField PProviderDescriptionField;
+
+    //Table and columns
+    @FXML
+    private TableView<Provider> PProviderTable;
+    @FXML
+    private TableColumn<Provider, String> PProviderNameCol;
+    @FXML
+    private TableColumn<Provider, String> PProviderNITCol;
+    @FXML
+    private TableColumn<Provider, String> PProviderDirectionCol;
+    @FXML
+    private TableColumn<Provider, String> PProviderPhoneCol;
+    @FXML
+    private TableColumn<Provider, String> PProviderEmailCol;
+    @FXML
+    private TableColumn<Provider, String> PProviderDescCol;
+
 
     //Tab Pane
     @FXML
@@ -80,24 +99,13 @@ public class PrincipalController {
     private Tab PTabConfig;
 
 
-    //Table and columns
-    @FXML
-    private TableView<Provider> PProviderTable;
-    @FXML
-    private TableColumn<Provider, String> PProviderNameCol;
-    @FXML
-    private TableColumn<Provider, String> PProviderNITCol;
-    @FXML
-    private TableColumn<Provider, String> PProviderDirectionCol;
-    @FXML
-    private TableColumn<Provider, String> PProviderPhoneCol;
-    @FXML
-    private TableColumn<Provider, String> PProviderEmailCol;
-    @FXML
-    private TableColumn<Provider, String> PProviderDescCol;
+    private final ProviderTab providerTabController = new ProviderTab();
 
     @FXML
     public void initialize() {
+        //Initialize subcontrollers
+        providerTabController.setPrincipalController(this);
+        //Show Buttons
         PShowProvidersButton.setOnAction(e -> onShowPro());
         PShowOrderButton.setOnAction(e -> onShowOrd());
         PShowPurchasesButton.setOnAction(e -> onShowCom());
@@ -105,55 +113,24 @@ public class PrincipalController {
         PShowProductButton.setOnAction(e -> onShowProduc());
         PShowDataButton.setOnAction(e -> onShowInfor());
         PShowConfigButton.setOnAction(e -> onShowConfig());
+        //Provider column fields
+        PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("NIT"));
+        PProviderDirectionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
+        PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        //Event buttons
         BotonMenu.setOnAction(e -> toggleVBoxVisibility());
-        PSaveProviderButton.setOnAction(e -> handleSaveProvider());
+        PSaveProviderButton.setOnAction(e -> providerTabController.handleSaveProvider());
     }
 
-    private boolean providersLoaded = false;
     private void onShowPro() {
         // Cambia siempre a la pestaña correspondiente, independientemente de la carga de datos
         PMainTabPane.getSelectionModel().select(PTabProviders);
 
         // Si los datos aún no se han cargado, entonces los carga
-        if (!providersLoaded) {
-            loadProviders();
-        }
-
-    }
-    private void loadProviders() {
-        try {
-            //Obtenemos todos los proveedores.
-            JSONArray jsonArray = ProviderService.getAll();
-            //Hacemos una observable list de provider
-            ObservableList<Provider> providers = FXCollections.observableArrayList();
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
-                providers.add(new Provider(
-                        obj.getString("name"),
-                        obj.getString("NIT"),
-                        obj.getString("direction"),
-                        obj.getString("phone"),
-                        obj.getString("email"),
-                        obj.getString("description")
-                ));
-            }
-            //Envía items a la tabla
-            PProviderTable.setItems(providers);
-            //Asignar valores de una columna a cada celda.
-            PProviderNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            PProviderNITCol.setCellValueFactory(new PropertyValueFactory<>("NIT"));
-            PProviderDirectionCol.setCellValueFactory(new PropertyValueFactory<>("direction"));
-            PProviderPhoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
-            PProviderEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-            PProviderDescCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-
-            // Marcar que los datos se han cargado para evitar recargas en futuras llamadas
-            providersLoaded = true;
-
-        } catch (IOException e) {
-            e.printStackTrace(); // Aquí deberías manejar el error más apropiadamente
-        }
+        providerTabController.loadProviders();
     }
 
     private void onShowOrd(){
@@ -174,30 +151,144 @@ public class PrincipalController {
     private void onShowCom(){
         PMainTabPane.getSelectionModel().select(PTabPurchases);
     }
-
-    private void handleSaveProvider() {
-        String nitValue = PProviderNITField.getText();
-        String nombreValue = PProviderNameField.getText();
-        String direccionValue = PProviderDirectionField.getText();
-        String numeroValue = PProviderPhoneField.getText();
-        String correoValue = PProviderEmailField.getText();
-        String descripcionValue = PProviderDescriptionField.getText();
-        try {
-            JSONObject respuestagregarP = ProviderService.create(nombreValue,nitValue,direccionValue,numeroValue,correoValue,descripcionValue);
-            System.out.println(respuestagregarP.toString());
-            String title = "Successful", headerText = null, content = "Usuario guardado exitosamente";
-            displayMessage(title, headerText, content);
-
-
-        } catch (Exception e) {
-            // Manejar la excepción, posiblemente mostrar un mensaje al usuario
-            e.printStackTrace();
-        }
-    }
-
     private void toggleVBoxVisibility() {
         MenudesP.setVisible(!MenudesP.isVisible());
     }
+
+
+
+
+
+
+
+    //Getters
+    public JSONObject getUser() {
+        return user;
+    }
+    public VBox getMenudesP() {
+        return MenudesP;
+    }
+
+    public Button getBotonMenu() {
+        return BotonMenu;
+    }
+
+    public Button getPSaveProviderButton() {
+        return PSaveProviderButton;
+    }
+
+    public TextField getPProviderNITField() {
+        return PProviderNITField;
+    }
+
+    public TextField getPProviderNameField() {
+        return PProviderNameField;
+    }
+
+    public TextField getPProviderDirectionField() {
+        return PProviderDirectionField;
+    }
+
+    public TextField getPProviderPhoneField() {
+        return PProviderPhoneField;
+    }
+
+    public TextField getPProviderEmailField() {
+        return PProviderEmailField;
+    }
+
+    public TextField getPProviderDescriptionField() {
+        return PProviderDescriptionField;
+    }
+
+    public TableView<Provider> getPProviderTable() {
+        return PProviderTable;
+    }
+
+    public TableColumn<Provider, String> getPProviderNameCol() {
+        return PProviderNameCol;
+    }
+
+    public TableColumn<Provider, String> getPProviderNITCol() {
+        return PProviderNITCol;
+    }
+
+    public TableColumn<Provider, String> getPProviderDirectionCol() {
+        return PProviderDirectionCol;
+    }
+
+    public TableColumn<Provider, String> getPProviderPhoneCol() {
+        return PProviderPhoneCol;
+    }
+
+    public TableColumn<Provider, String> getPProviderEmailCol() {
+        return PProviderEmailCol;
+    }
+
+    public TableColumn<Provider, String> getPProviderDescCol() {
+        return PProviderDescCol;
+    }
+
+    public TabPane getPMainTabPane() {
+        return PMainTabPane;
+    }
+
+    public Button getPShowProvidersButton() {
+        return PShowProvidersButton;
+    }
+
+    public Button getPShowOrderButton() {
+        return PShowOrderButton;
+    }
+
+    public Button getPShowPurchasesButton() {
+        return PShowPurchasesButton;
+    }
+
+    public Button getPShowClientButton() {
+        return PShowClientButton;
+    }
+
+    public Button getPShowProductButton() {
+        return PShowProductButton;
+    }
+
+    public Button getPShowDataButton() {
+        return PShowDataButton;
+    }
+
+    public Button getPShowConfigButton() {
+        return PShowConfigButton;
+    }
+
+    public Tab getPTabProviders() {
+        return PTabProviders;
+    }
+
+    public Tab getPTabOrders() {
+        return PTabOrders;
+    }
+
+    public Tab getPTabPurchases() {
+        return PTabPurchases;
+    }
+
+    public Tab getPTabCustomers() {
+        return PTabCustomers;
+    }
+
+    public Tab getPTabProducts() {
+        return PTabProducts;
+    }
+
+    public Tab getPTabData() {
+        return PTabData;
+    }
+
+    public Tab getPTabConfig() {
+        return PTabConfig;
+    }
+
 
 }
 
