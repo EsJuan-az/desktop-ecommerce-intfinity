@@ -38,7 +38,7 @@ public class GUIHandler{
 
     // Ventana emergente en principal
     public static void displayMessage(String title, String headerText, String content) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.setContentText(content);
