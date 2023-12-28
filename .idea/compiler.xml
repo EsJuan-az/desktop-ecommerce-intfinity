@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AppIntfinity" options="--add-exports java.base/jdk.internal.jimage=com.intfinty.appintfinity" />
+      <module name="AppIntfinity" options="" />
     </option>
   </component>
 </project>
