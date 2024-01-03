@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import com.services.UserService;
 
 public class LoginController {
-
+    //Este comentario lo hizo nico.
     @FXML
     private TextField LEmailField; // Asegúrate de que el FXML tiene un TextField con fx:id="emailField"
 
