@@ -15,10 +15,11 @@ import static com.helpers.GUIHandler.displayMessage;
 
 public class ProviderTab {
 
+    public int id;
     private PrincipalController principalController;
 
     private boolean providersLoaded = false;
-    ObservableList<Provider> providers;
+    public  ObservableList<Provider> providers = FXCollections.observableArrayList();
 
     public void setPrincipalController(PrincipalController principalController) {
         this.principalController = principalController;
@@ -28,8 +29,6 @@ public class ProviderTab {
         if( providersLoaded ) return;
 
         try {
-            //Hacemos una observable list de provider
-            this.providers = FXCollections.observableArrayList();
             //Obtenemos todos los proveedores.
             JSONArray jsonArray = ProviderService.getAll();
             //Recorre el array creando y añadiendo providers a la lista.
@@ -63,7 +62,7 @@ public class ProviderTab {
         String correoValue = principalController.getPProviderEmailField().getText();
         String descripcionValue = principalController.getPProviderDescriptionField().getText();
         //Tratamos de hacer la petición
-        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+        Provider newProvider = new Provider(id, nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
 
 
         if (nitValue.isEmpty() || nombreValue.isEmpty() || numeroValue.isEmpty() || correoValue.isEmpty() || direccionValue.isEmpty() ) {
@@ -71,9 +70,7 @@ public class ProviderTab {
         }else {
             try {
                 JSONObject respuestagregarP = ProviderService.create(nombreValue, nitValue, direccionValue, numeroValue, correoValue, descripcionValue);
-                int id = respuestagregarP.getInt("id");
-                System.out.println(respuestagregarP.toString());
-                System.out.println(id);
+                id = respuestagregarP.getInt("id");
 
                 // Mensaje de éxito
                 String title = "Successful", headerText = null, content = "Proveedor guardado exitosamente";
@@ -95,7 +92,7 @@ public class ProviderTab {
         String numeroValue = principalController.getPProviderPhoneField().getText();
         String correoValue = principalController.getPProviderEmailField().getText();
         String descripcionValue = principalController.getPProviderDescriptionField().getText();
-        Provider newProvider = new Provider(nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
+        Provider newProvider = new Provider(id, nitValue, nombreValue, direccionValue, numeroValue, correoValue, descripcionValue);
         this.handleClearProviderFields();
 
         try {

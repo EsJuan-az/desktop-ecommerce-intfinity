@@ -1,5 +1,6 @@
 package com.schemas;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.json.JSONObject;
 
@@ -15,6 +16,7 @@ public class Provider {
                 obj.getString("description")
         );
     }
+    private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
     private final SimpleStringProperty NIT;
     private final SimpleStringProperty direction;
@@ -22,6 +24,7 @@ public class Provider {
     private final SimpleStringProperty email;
     private final SimpleStringProperty description;
     public Provider(int id, String name, String NIT, String direction, String phone, String email, String description) {
+        this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.NIT = new SimpleStringProperty(NIT);
         this.direction = new SimpleStringProperty(direction);
@@ -31,12 +34,18 @@ public class Provider {
     }
 
     // Getters aquí...
+    public Integer getid() { return id.get(); }
     public String getName() { return name.get(); }
     public String getNIT() { return NIT.get(); }
     public String getDirection() { return direction.get(); }
     public String getPhone() { return phone.get(); }
     public String getEmail() { return email.get(); }
     public String getDescription() { return description.get(); }
+    public int getId(){
+        return id.get();
+    }
+
+
 
     // Setters aquí si son necesarios...
     // Property getters...
